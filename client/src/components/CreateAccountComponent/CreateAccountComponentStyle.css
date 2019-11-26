@@ -1,0 +1,10 @@
+.contForm { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.btnSub {
+    width: 10%;
+}

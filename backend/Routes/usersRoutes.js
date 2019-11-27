@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
 });
 
 
-router.get('/:id', async (req, res) => {
+router.get('/singleuser/:id', async (req, res) => {
     var singleUserFromRoutes = await User.find({ "username": req.params.id }, function (err, singleUser) {
         if (err) return console.error(err);
         console.log("Printing singleUser");
@@ -44,7 +44,6 @@ router.post('/adduser', async function (req, res) {
 router.post('/login', async function (req, res) {
     await User.find({ "email": req.body.email }, async function (err, userFound) {
         if (userFound.length != 0 && userFound[0].password === req.body.password) {
-            console.log("User exists", userFound)
             const payload = {
                 id: userFound[0].id,
                 username: userFound[0].username,
@@ -74,8 +73,6 @@ router.post('/login', async function (req, res) {
         }
     })
 });
-
-
 
 
 

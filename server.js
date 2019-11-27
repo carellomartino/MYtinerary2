@@ -5,9 +5,14 @@ var mongoose = require('mongoose');
 var url = "mongodb+srv://carellomartino:careCARE9900@mycluster-1o7tp.mongodb.net/MYtinerary?retryWrites=true&w=majority";
 var db = mongoose.connection;
 const routes = require('./backend/Routes/index')
+const passport = require('./backend/config/passport');
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(passport.initialize());
+
 
 const port = process.env.PORT || 5000;
 

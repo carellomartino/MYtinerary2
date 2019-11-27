@@ -1,6 +1,6 @@
 const config =
 {
-  "secretOrKey": "secret"
+  secretOrKey: "secret"
 }
 
 module.exports = config;

@@ -3,7 +3,7 @@ const router = express.Router();
 const User = require('../Schemas/User.js')
 const key = require("../config/config");
 const jwt = require("jsonwebtoken");
-const passport = require('../config/passport');
+const passport = require('passport');
 
 
 router.get('/', async (req, res) => {
@@ -44,7 +44,7 @@ router.post('/adduser', async function (req, res) {
 router.post('/login', async function (req, res) {
     await User.find({ "email": req.body.email }, async function (err, userFound) {
         if (userFound.length != 0 && userFound[0].password === req.body.password) {
-            console.log("User exists")
+            console.log("User exists", userFound)
             const payload = {
                 id: userFound[0].id,
                 username: userFound[0].username,
@@ -79,7 +79,15 @@ router.post('/login', async function (req, res) {
 
 
 
-
+router.get('/test', passport.authenticate('jwt', { session: false }), (req, res) => {
+    console.log("estoy")
+    User.findOne({ _id: req.user.id })
+        .then(user => {
+            res.json(user);
+        })
+        .catch(err => res.status(404).json({ error: "User does not exist!" }));
+}
+);
 
 
 

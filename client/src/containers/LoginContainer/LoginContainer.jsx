@@ -19,16 +19,16 @@ class LoginContainer extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    console.log("handle")
     const user = {
       email: this.state.email,
       password: this.state.password
     };
     this.props.validateUserNow(user)
-      .then(() => {
-        if (this.props.isLoggedIn) {
-            alert("You are successfully logged!")
-            this.props.history.push("/index");
-        }
+      .then((user) => {
+          console.log("valide")
+          alert("You are successfully logged!");
+          this.props.history.push("/index");
       })
       .catch(() => {
         this.setState({ error: true });
@@ -44,8 +44,8 @@ class LoginContainer extends Component {
   }
 
   render() {
-    console.log(this.props);
-    console.log(this.state);
+    // console.log(this.props);
+    // console.log(this.state);
     return (
       <div>
         <LoginComponent
@@ -62,7 +62,7 @@ class LoginContainer extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    isLoggedIn: state.user.isLoggedIn,
+    // isLoggedIn: state.user.isLoggedIn,
     user: state
   };
 };

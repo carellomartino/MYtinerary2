@@ -21,14 +21,22 @@ router.get('/:id', async (req, res) => {
 
 
 router.post('/adduser', async function (req, res) {
-    try {
-        const user = new User(req.body);
-        await user.save();
-        res.send(user);
-    } catch (e) {
-        res.send(e);
-    }
+    await User.find({ "email": req.body.email }, async function (err, userFound) {
+        if (userFound.length != 0) {
+            return res.send('x')
+        } else {
+            try {
+                const user = new User(req.body);
+                await user.save();
+                res.send(user);
+            } catch (e) {
+                res.send(e);
+            }
+        }
+    })
 });
+
+
 
 
 

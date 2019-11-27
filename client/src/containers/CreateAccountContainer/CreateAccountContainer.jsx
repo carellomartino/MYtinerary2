@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import CreateAccountComponent from "../../components/CreateAccountComponent/CreateAccountComponent";
 import { connect } from "react-redux";
-import { addUser } from '../../store/action-creators/userActions'
+import { addUser } from "../../store/action-creators/userActions";
 
 class CreateAccountContainer extends Component {
   constructor(props) {
@@ -28,8 +28,14 @@ class CreateAccountContainer extends Component {
 
   async handleSubmit(e) {
     e.preventDefault();
-    alert("Account created successfully!");
-    await this.props.addNewUser(this.state)
+    await this.props.addNewUser(this.state).then(data => {
+      if (data === true) {
+        alert("ERROR: The email you entered already has an associated account");
+      } else {
+        alert("Your account has been successfully created!");
+        this.props.history.push("/index");
+      }
+    });
   }
 
   handleUsername(e) {
@@ -64,6 +70,7 @@ class CreateAccountContainer extends Component {
     return (
       <div>
         <CreateAccountComponent
+          handleSubmit={this.handleSubmit}
           username={this.state.useranme}
           password={this.state.password}
           image={this.state.image}
@@ -71,7 +78,6 @@ class CreateAccountContainer extends Component {
           firstName={this.state.firstName}
           lastName={this.state.lastName}
           country={this.state.country}
-          handleSubmit={this.handleSubmit}
           handleUsername={this.handleUsername}
           handlePassword={this.handlePassword}
           handleImage={this.handleImage}

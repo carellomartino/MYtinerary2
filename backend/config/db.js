@@ -4,3 +4,10 @@
 
 // mongoose.connect(url, { useUnifiedTopology: true });
 // mongoose.set('useNewUrlParser', true)
+
+// {
+//     secretOrKey: "secret"
+// }
+
+
+// module.exports = secretOrKey;

@@ -1,5 +1,6 @@
 import React from "react";
-import './LoginComponentStyle.css';
+import "./LoginComponentStyle.css";
+import { Link } from 'react-router-dom'
 
 const LoginComponent = ({
   handlePassword,
@@ -23,24 +24,28 @@ const LoginComponent = ({
             required
           ></input>
           <label htmlFor="password">Password:&nbsp;</label>
-            <input
-              className={"inpStyle2"}
-              value={password}
-              onChange={handlePassword}
-              type="password"
-              name="password"
-              required
-            />
-            <label htmlFor="submit"></label>
-            <button
-              className={"btn btn-primary btnSub"}
-              type="submit"
-              name="submit"
-            >
-              Log In!
-            </button>
+          <input
+            className={"inpStyle2"}
+            value={password}
+            onChange={handlePassword}
+            type="password"
+            name="password"
+            required
+          />
+          <label htmlFor="submit"></label>
+          <button
+            className={"btn btn-primary btnSub2"}
+            type="submit"
+            name="submit"
+          >
+            Log In!
+          </button>
         </div>
       </form>
+      
+        <button onClick={() =>{ window.location.href = "api/users/auth/google"}} className={"btn btn-primary btnSub3 btnSub2"}>
+          Log In with Google
+        </button>
     </div>
   );
 };

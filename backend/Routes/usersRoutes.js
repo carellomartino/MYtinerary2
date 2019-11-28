@@ -87,8 +87,22 @@ router.get('/test', passport.authenticate('jwt', { session: false }), (req, res)
 );
 
 
+router.get('/auth/google', passport.authenticate('google', { scope: ['email', "profile"] }));
 
 
+
+
+  router.get('/auth/google/callback',
+  passport.authenticate('google', { failureRedirect: '/login' }),
+  function(req, res) {
+      console.log("que paso?")
+    // User.findOne({ email: req.user.email })
+    //     .then(user => {
+    //         res.json(user);
+    //     })
+    //     .catch(err => res.status(404).json({ error: "User does not exist!" }));
+    // res.redirect('/');
+  });
 
 
 

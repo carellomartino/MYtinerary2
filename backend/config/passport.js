@@ -7,9 +7,8 @@ const key = require('./config');
 const opts = {};
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken('jwt');
 opts.secretOrKey = key.secretOrKey;
-
-console.log("Soy passport")
-
+opts.clientID = key.clientID;
+opts.clientSecret = key.clientSecret;
 
 passport.use(new JwtStrategy(opts, (jwt_payload, done) => {
     console.log("entre")
@@ -24,6 +23,22 @@ passport.use(new JwtStrategy(opts, (jwt_payload, done) => {
         .catch(err => console.log(err));
 })
 );
+
+
+var GoogleStrategy = require('passport-google-oauth20').Strategy;
+
+passport.use(new GoogleStrategy({
+    clientID: opts.clientID,
+    clientSecret: opts.clientSecret,
+    callbackURL: "http://localhost:5000/api/users/auth/google/callback",
+    // passReqToCallback: true
+  },
+  function(accessToken, refreshToken, profile, cb) { console.log("entro")
+    User.findOrCreate({ googleId: profile.id }, function (err, user) {
+      return cb(err, user);
+    });
+  }
+));
 
 
 

@@ -5,13 +5,14 @@ var userSchema = new mongoose.Schema({
     password: String,
     image: String,
     email: String,
+    // SI EN LUGAR DE DEFINIR UN STRING DEFINO UN OBJETO CON type: String Y unique: true, ME VALIDA ANTES DE CREAR NADA QUE NO ESTÉ REPETIDO. PERO NO FUNCIONA EN COLECCIONES YA CREADAS, DEBE CREARSE UNA NUEVA COLECCIÓN
     firstName: String,
     lastName: String,
     country: String
   });
   
   console.log("Soy User.js")
-  var User = mongoose.model('User', userSchema);
+  var User = mongoose.model('User', userSchema); //testEmailUnico
   
   // var newCity = new City({ name: 'AAAKOAKAOKAKOA', country: 'JAKSJDAKSD' });
   // console.log(newCity.name, newCity.country);

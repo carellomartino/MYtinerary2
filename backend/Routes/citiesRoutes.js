@@ -24,9 +24,9 @@ router.post('/addcity', async function (req, res) {
     try {
         const city = new City(req.body);
         await city.save();
-        res.send(city);
+        res.status(2001).send(city);
     } catch (e) {
-        res.send(e);
+        res.status(500).send(e);
     }
 });
 

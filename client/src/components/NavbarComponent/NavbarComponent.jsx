@@ -8,7 +8,7 @@ const NavbarComponent = props => {
   return (
     <div>
       <Link to='/index'>
-      <img className={"logo"} src={logo} alt="" />
+      <img className="logo" src={logo} alt="" />
       </Link>
     </div>
   );

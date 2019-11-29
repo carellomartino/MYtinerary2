@@ -87,7 +87,7 @@ router.get('/test', passport.authenticate('jwt', { session: false }), (req, res)
 );
 
 
-router.get('/auth/google', passport.authenticate('google', { scope: ['email', "profile"] }));
+router.get('/auth/google', passport.authenticate('google', { scope: ["profile"] }));
 
 
 

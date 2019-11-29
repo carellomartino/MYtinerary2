@@ -12,8 +12,7 @@ import AddCityComponent from './components/AddCityComponent/AddCityComponent'
 import CityItinerariesContainer from './containers/CityItinerariesContainer/CityItinerariesContainer';
 import AddItinerary from './components/AddItineraryComponent/AddItinerary';
 import CreateAccountContainer from './containers/CreateAccountContainer/CreateAccountContainer';
-import GoogleAuthContainer from './containers/GoogleAuthContainer/GoogleAuthContainer';
-import GoogleRedirectComponent from './components/GoogleRedirectComponent/GoogleRedirectComponent';
+
 
 class Main extends React.Component {
 
@@ -34,8 +33,6 @@ class Main extends React.Component {
             <Route path='/add-city' component={AddCityComponent}/>
             <Route exact path='/itineraries/add' component={AddItinerary}/>
             <Route exact path='/itineraries/:city_name' component={CityItinerariesContainer}/>
-            <Route path='/googleauth' component={GoogleAuthContainer}/>
-            <Route path='/loggedgoogle' component={GoogleRedirectComponent}/>
           </Switch>
           <Route component={FooterComponent} />
           <Redirect exact from="/" to="/index" />

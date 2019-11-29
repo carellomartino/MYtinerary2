@@ -3,7 +3,7 @@ import Axios from "axios"
 
 const logInUser = (user) => ({
     type: LOG_IN_USER,
-    user
+    user: user
 });
 // const logOutUser = () => ({
 //     type: LOG_OUT_USER
@@ -13,10 +13,12 @@ const logInUser = (user) => ({
 export const validateUser = (userData) => dispatch => {
     return Axios.post('/api/users/login', userData)
         .then((user) => {
-            user.data === 'x' ?
-                alert('Invalid email or password')
-                :
-                dispatch(logInUser(user.data))
+            if (user.data === 'x') {
+                return true
+            } else {
+                dispatch(logInUser(user))
+                return false
+            }
         })
 }
 

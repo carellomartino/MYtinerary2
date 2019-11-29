@@ -20,6 +20,7 @@ class SearchCitiesContainer extends Component {
   async handleChange(e) {
     e.preventDefault();
     await this.setState({ inputValue: e.target.value });
+    // console.log(this.state.inputValue)
     this.filterCities();
   }
 
@@ -48,6 +49,7 @@ class SearchCitiesContainer extends Component {
   }
 
   render() {
+    console.log("Soy props", this.props)
     return (
       <div>
         <SearchCitiesComponent

@@ -1,6 +1,5 @@
 import React from "react";
 import "./LoginComponentStyle.css";
-import { Link } from 'react-router-dom'
 
 const LoginComponent = ({
   handlePassword,
@@ -42,10 +41,11 @@ const LoginComponent = ({
           </button>
         </div>
       </form>
-      
-        <button onClick={() =>{ window.location.href = "api/users/auth/google"}} className={"btn btn-primary btnSub3 btnSub2"}>
+      <a href="http://localhost:5000/api/users/auth/google">
+        <button className={"btn btn-primary btnSub2 btnSub3"}>
           Log In with Google
         </button>
+      </a>
     </div>
   );
 };

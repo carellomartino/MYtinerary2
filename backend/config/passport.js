@@ -11,7 +11,6 @@ opts.clientID = key.clientID;
 opts.clientSecret = key.clientSecret;
 
 passport.use(new JwtStrategy(opts, (jwt_payload, done) => {
-    console.log("entre")
     User.findById(jwt_payload.id)
         .then(user => {
             console.log(user)

@@ -17,7 +17,7 @@ constructor(props) {
 async componentDidMount(){
   console.log("component")
     await this.props.googleValidation()
-    console.log(this.props)
+    console.log("props",this.props)
 }
 
 

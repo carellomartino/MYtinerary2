@@ -24,7 +24,7 @@ export const addUser = (userData) => dispatch => {
 
 
 
-export const addUserGoogle = () => dispatch => {
-    return Axios.get('/api/users/auth/google', )
-    .then((data) => console.log(data))
-}
+// export const addUserGoogle = () => dispatch => {
+//     return Axios.get('/api/users/auth/google', )
+//     .then((data) => console.log(data))
+// }
